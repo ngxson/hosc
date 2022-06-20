@@ -4,7 +4,8 @@
 [ "$(whoami)" != "root" ] && echo "This script needs to be run as root" && exec sudo -- "$0" "$@"
 
 # Pre-setup
-apt-get -y install curl sshd git
+apt-get update
+apt-get -y install curl ssh git
 cd /etc
 git clone https://github.com/ngxson/hosc.git
 cd /etc/hosc
@@ -21,7 +22,7 @@ sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication no" 
 systemctl restart ssh
 
 # Setup hosc user
-useradd -m hosc
+usermod -m hosc
 usermod -aG sudo hosc
 mkdir              /home/hosc/.ssh
 chmod -R 700       /home/hosc/.ssh

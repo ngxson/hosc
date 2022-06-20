@@ -39,7 +39,7 @@ const init = async () => {
 
   console.log('Connecting to server...');
   socket.once('connect', () => {
-    askHostnameAndSetup(socket);
+    askHostnameAndSetup(socket)();
   });
 };
 
