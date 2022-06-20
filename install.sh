@@ -6,6 +6,7 @@
 # Pre-setup
 apt-get update
 apt-get -y install curl ssh git
+rm -rf /etc/hosc
 cd /etc
 git clone https://github.com/ngxson/hosc.git
 cd /etc/hosc
@@ -32,10 +33,6 @@ chmod 600          /home/hosc/.ssh/authorized_keys
 chown -R hosc:hosc /home/hosc/.ssh
 # TODO: remove current user from sudoers
 
-# Run HOSC installer
-npm ci
-node install.js
-
 # Install service
 cp /etc/hosc/service/hosc.service /etc/systemd/system/hosc.service
 chmod a+x /etc/systemd/system/hosc.service
@@ -44,5 +41,6 @@ systemctl daemon-reload
 systemctl enable hosc.service
 systemctl start hosc.service
 
-# OK
-reboot
+# Run HOSC installer
+npm ci
+node install.js

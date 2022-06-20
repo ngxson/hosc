@@ -67,9 +67,10 @@ const askHostnameAndSetup = (socket) => async () => {
 
     console.log('HOSC setup complete. Rebooting now...');
     await sleep(3000);
+    execSync('reboot');
 
-    socket.disconnect();
-    process.exit();
+    //socket.disconnect();
+    //process.exit();
   });
 };
 
