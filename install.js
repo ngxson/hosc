@@ -54,7 +54,7 @@ const askHostnameAndSetup = (socket) => async () => {
 
   execSync(`hostnamectl set-hostname "${hostname}"`);
 
-  socket.emit('hosc_setup', { hostname }, ({ sshPublicKey, hoscPassword, error }) => {
+  socket.emit('hosc_setup', { hostname }, async ({ sshPublicKey, hoscPassword, error }) => {
     if (error) {
       console.log('ERROR:' + error);
       askHostnameAndSetup(socket)();
