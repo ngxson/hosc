@@ -29,7 +29,7 @@ const init = async () => {
     rejectUnauthorized: false,
   });
   hoscData.serverIpAddr = serverIpAddr;
-  socket.io.on('error', () => {
+  socket.io.once('error', () => {
     console.error('Cannot connect to server. Please try again.');
     if (socket.connected) {
       socket.disconnect();
