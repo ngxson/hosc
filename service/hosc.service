@@ -1,0 +1,13 @@
+[Unit]
+Description=HephaistOS Client
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/sudo /bin/bash /etc/hosc/service.sh
+
+[Install]
+WantedBy=multi-user.target
