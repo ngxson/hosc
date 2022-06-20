@@ -21,7 +21,7 @@ sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication no" 
 systemctl restart ssh
 
 # Setup hosc user
-adduser -m hosc
+useradd -m hosc
 usermod -aG sudo hosc
 mkdir              /home/hosc/.ssh
 chmod -R 700       /home/hosc/.ssh
