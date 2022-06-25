@@ -13,12 +13,12 @@ const socket = io(`https://${serverIpAddr}:3030`, {
   rejectUnauthorized: false,
 });
 
-socket.io.on('error', () => {
+socket.io.on('error', async () => {
   console.error('Cannot connect to server. Exiting in 3 seconds...');
   await sleep(3000);
   process.exit(1);
 });
 
-socket.once('connect', () => {
+socket.once('connect', async () => {
   socket.emit('hosc_ip', { hostname });
 });
