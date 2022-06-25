@@ -9,7 +9,7 @@
     "socket.io-client": "^4.5.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cp install.sh index.html"
   },
   "author": "",
   "license": "ISC"

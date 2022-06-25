@@ -27,13 +27,12 @@ const init = async () => {
   const socket = io(`https://${serverIpAddr}:3030`, {
     ca: getFile('./ssl/certificate.crt'),
     rejectUnauthorized: false,
+    reconnection: false,
   });
   hoscData.serverIpAddr = serverIpAddr;
   socket.io.once('error', () => {
     console.error('Cannot connect to server. Please try again.');
-    if (socket.connected) {
-      socket.disconnect();
-    }
+    socket.disconnect();
     init();
   });
 
